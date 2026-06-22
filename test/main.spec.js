@@ -3,10 +3,10 @@ import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }, testInfo) => {
   // Her test öncesi data çekiyoruz
-  const ipResponse = await axios.get("https://kaizu-api-8cd10af40cb3.herokuapp.com/ipadresim");
+  const ipResponse = await axios.get("https://apis.code2work.co/ipadresim");
   const ipAdresim = ipResponse.data;
   const geoResponse = await axios.get(
-    `https://kaizu-api-8cd10af40cb3.herokuapp.com/ipgeoapi/${ipAdresim}`,
+    `https://apis.code2work.co/ipgeoapi/${ipAdresim}`,
   );
   testInfo.data = geoResponse.data;
 

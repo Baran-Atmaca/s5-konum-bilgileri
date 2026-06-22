@@ -4,7 +4,7 @@ import axios from "axios";
 async function ipAdresimiAl() {
   return await axios({
     method: "get",
-    url: "https://kaizu-api-8cd10af40cb3.herokuapp.com/ipadresim",
+    url: "https://apis.code2work.co/ipadresim",
   }).then(function (response) {
     return response.data;
   });
@@ -19,7 +19,7 @@ console.log(ipAdresim);
   - HTML ve CSS hazır, önce IP adresini, sonra bunu kullanarak diğer bilgileri alacağız.
 
 	ADIM 1: IP kullanarak verileri almak
-  getData fonskiyonunda axios kullanarak şu adrese GET sorgusu atacağız: https://kaizu-api-8cd10af40cb3.herokuapp.com/ipgeoapi/{ipAdresiniz}
+  getData fonskiyonunda axios kullanarak şu adrese GET sorgusu atacağız: https://apis.code2work.co/ipgeoapi/{ipAdresiniz}
 
   Fonksiyon gelen datayı geri dönmeli.
 
