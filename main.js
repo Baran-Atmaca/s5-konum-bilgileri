@@ -30,7 +30,9 @@ console.log(ipAdresim);
 */
 
 async function getData() {
-  /* kodlar buraya */
+  const ip = await ipAdresimiAl();
+  const response = await axios.get(`https://apis.code2work.co/ipgeoapi/${ip}`);
+  return response.data;
 }
 
 /*
@@ -54,8 +56,51 @@ async function getData() {
   </div>
 */
 
-function cardOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cardOlustur(ipAdres) {
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("card");
+
+  const bayrak = document.createElement("img");
+  bayrak.src = `https://flaglog.com/codes/standardized-rectangle-120px/${ipAdres.ülkeKodu}.png`;
+
+  const div = document.createElement("div");
+  div.classList.add("card-info");
+
+  const h3 = document.createElement("h3");
+  h3.classList.add("ip");
+  h3.textContent = ipAdres.sorgu;
+
+  const p = document.createElement("p");
+  p.classList.add("ulke");
+  p.textContent = `${ipAdres.ülke} (${ipAdres.ülkeKodu})`;
+
+  const pEnlem = document.createElement("p");
+  pEnlem.textContent = `Enlem: ${ipAdres.enlem} - Boylam: ${ipAdres.boylam}`;
+
+  const pSehir = document.createElement("p");
+  pSehir.textContent = `Şehir: ${ipAdres.bölgeAdı}`;
+
+  const pSaat = document.createElement("p");
+  pSaat.textContent = `Saat dilimi: ${ipAdres.saatdilimi}`;
+
+  const pPara = document.createElement("p");
+  pPara.textContent = `Para birimi: ${ipAdres.parabirimi}`;
+
+  const pISP = document.createElement("p");
+  pISP.textContent = `ISP: ${ipAdres.isp}`;
+
+  mainDiv.appendChild(bayrak);
+  mainDiv.appendChild(div);
+
+  div.appendChild(h3);
+  div.appendChild(p);
+  div.appendChild(pEnlem);
+  div.appendChild(pSehir);
+  div.appendChild(pSaat);
+  div.appendChild(pPara);
+  div.appendChild(pISP);
+
+  return mainDiv;
 }
 
 // Buradan sonrasını değiştirmeyin, burası yazdığınız kodu sayfaya uyguluyor.
